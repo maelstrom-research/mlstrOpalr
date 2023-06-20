@@ -1,0 +1,45 @@
+Package: mlstrOpalr
+Type: Package
+Title: Support compatibility between Maelstrom R packages and Opal environment
+Version: 1.0.0.0000
+Authors@R: 
+    c(person(given = "Guillaume",
+             family = "Fabre",
+             role = c("aut", "cre"),
+             email = "guijoseph.fabre@gmail.com",
+             comment = c(ORCID = "0000-0002-0124-9970")),
+      person("Maelstrom-research group",
+             role=c("cph", "fnd"),
+             email="info@maelstrom-research.org"),
+      person(given = "Samuel",
+             family = "El Bouzaïdi Tiali",
+             role=c("ctb"),
+             email="info@maelstrom-research.org"))
+Description: The goal of mlstrOpalr is to provide functions to support 
+     compatibility between Maelstrom R packages and Opal environment. 
+     Opal is the OBiBa application for data management, and Opal environments 
+     can be integrated with RStudio environments using the package `opalr`. 
+     The user must have adequate credentials to interact with a specific Opal 
+     environment.
+     Please see <https://opaldoc.obiba.org/en/dev/> for complete documentation.
+License: GPL-3
+LazyData: true
+Depends: R (>= 3.4)
+Imports: dplyr,
+    rlang,
+    tidyr,
+    stringr,
+    tools,
+    opalr,
+    fabR,
+    madshapR
+Remotes: 
+    maelstrom-research/madshapR
+URL: https://github.com/maelstrom-research/mlstrOpalr/
+BugReports: https://github.com/maelstrom-research/mlstrOpalr/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: knitr
+VignetteBuilder: knitr
+Encoding: UTF-8
+Language: en-US
