@@ -1,7 +1,7 @@
 Package: mlstrOpalr
 Type: Package
 Title: Support compatibility between Maelstrom R packages and Opal environment
-Version: 1.0.0.0000
+Version: 1.0.0.1000
 Authors@R: 
     c(person(given = "Guillaume",
              family = "Fabre",
@@ -11,10 +11,9 @@ Authors@R:
       person("Maelstrom-research group",
              role=c("cph", "fnd"),
              email="info@maelstrom-research.org"),
-      person(given = "Samuel",
-             family = "El Bouzaïdi Tiali",
-             role=c("ctb"),
-             email="info@maelstrom-research.org"))
+      person("OBiBa group",
+             role="cph",
+             email="info@obiba.org"))
 Description: The goal of mlstrOpalr is to provide functions to support 
      compatibility between Maelstrom R packages and Opal environment. 
      Opal is the OBiBa application for data management, and Opal environments 
@@ -33,8 +32,6 @@ Imports: dplyr,
     opalr,
     fabR,
     madshapR
-Remotes: 
-    maelstrom-research/madshapR
 URL: https://github.com/maelstrom-research/mlstrOpalr/
 BugReports: https://github.com/maelstrom-research/mlstrOpalr/issues
 Roxygen: list(markdown = TRUE)

@@ -24,12 +24,12 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\dontrun{
+{
 
 library(opalr)
 opal <- 
-  opal.login('administrator','password', 
-    url ='https://opal-demo.maelstrom-research.org')
+ opal.login('administrator','password',
+   url ='https://opal-demo.obiba.org/')
   
 try(taxonomy_opal_get(opal))
 

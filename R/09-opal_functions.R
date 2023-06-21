@@ -19,7 +19,6 @@
 #' @param opal Opal login attributes.
 #' @param project A character string to name the project in Opal.
 #' @param tag A character string to provide a tag for the Opal project.
-#' @param ... Additional parameters.
 #'
 #' @returns
 #' A project in an Opal environment. If the project already exists, it
@@ -28,13 +27,13 @@
 #' environment.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' 
 #' library(opalr)
-#' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
-#'   
+#' opal <-
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
+#'
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
@@ -44,10 +43,11 @@
 #' @importFrom rlang .data
 #'
 #' @export
-opal_project_create <- function(opal, project, tag = NULL,...){
+opal_project_create <- function(opal, project, tag = NULL){
 
   if(!is.null(tag)){tag <- as.list(tag)}
   for(i in project){
+    # stop()}
 
     if(opal.project_exists(opal = opal, project = basename(i))){
       message(
@@ -59,7 +59,7 @@ opal_project_create <- function(opal, project, tag = NULL,...){
         opal = opal,
         project = basename(i),
         database = TRUE,
-        tags = tag,...)
+        tags = tag)
       message("The project ",i," has been created in Opal")
     }
   }
@@ -94,12 +94,12 @@ opal_project_create <- function(opal, project, tag = NULL,...){
 #' The path to Opal needs to be pasted with Opal absolute path.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' 
 #' library(opalr)
 #' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
 #'   
 #' tempdir <- tempdir()
 #' invisible(dir.create(paste0(tempdir,"/a_file")))
@@ -146,12 +146,12 @@ opal_files_push <- function(opal, from, to){
 #' Folder(s) containing files coming from Opal in user R environment.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' 
 #' library(opalr)
 #' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
 #'   
 #' tempdir <- tempdir()
 #' invisible(dir.create(paste0(tempdir,"/a_file")))
@@ -250,22 +250,22 @@ opal_files_pull <- function(opal, from, to = paste0(getwd(),"/opal_files")){
 #' A table or table(s) in Opal.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' 
-#' #' # use DEMO_files provided by the package
 #' library(opalr)
-#' library(stringr)
-#'
-#' dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
-#'
 #' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
+#'     
+#' # use DEMO_files provided by the package
+#' library(madshapR)
+#' library(stringr)
+#' dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
 #'     
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
-#' ###### Example 1: push a table in a project.
+#' # push a table in a project.
 #' try( 
 #'   opal_tables_push(
 #'   opal,
@@ -274,11 +274,6 @@ opal_files_pull <- function(opal, from, to = paste0(getwd(),"/opal_files")){
 #'   project_name = tempdir,
 #'   .force = TRUE,
 #'   .overwrite = TRUE))
-#'   
-#' ###### Example 2: push a dossier in a project.
-#' try(
-#'   opal_tables_push(
-#'   opal, dossier, project_name = tempdir, .force = TRUE, .overwrite = TRUE))
 #' 
 #' }
 #'
@@ -441,19 +436,20 @@ opal_tables_push <- function(
 #' respective data dictionary.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' 
-#' #' # use DEMO_files provided by the package
 #' library(opalr)
+#' opal <- 
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
+#'    
+#' # use DEMO_files provided by the package
+#' library(madshapR)
 #' library(stringr)
 #'
 #' dossier <- 
 #'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
 #'
-#' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
-#'   
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
@@ -461,20 +457,10 @@ opal_tables_push <- function(
 #'   opal_tables_push(
 #'   opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = TRUE))
 #'   
-#' ###### Example 1: pull a table from a project.
+#' ###### Example pull a table from a project.
 #' try(
 #'   opal_tables_pull(
 #'   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
-#' 
-#' ###### Example 2: pull a dossier from a project.
-#' try(
-#'   opal_tables_pull(
-#'   opal, project = tempdir))
-#' 
-#' ###### Example 3: pull a data dictionary from a project.
-#' try(
-#'   opal_tables_pull(
-#'   opal, project = tempdir, content = 'data_dict'))
 #' 
 #' }
 #'
@@ -637,14 +623,14 @@ opal_tables_pull <- function(
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' 
 #' library(opalr)
 #' opal <-
-#'   opal.login('administrator','password',
-#'     url ='https://opal-demo.maelstrom-research.org')
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
 #' 
-#' try(taxonomy_opal_mlstr_get(opal))
+#' try(taxonomy_opal_get(opal))
 #'   
 #' }
 #'
@@ -889,12 +875,12 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy).
 #'
 #' @examples
-#' \dontrun{
+#' {
 #' 
 #' library(opalr)
 #' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
 #'   
 #' try(taxonomy_opal_get(opal))
 #' 
@@ -1006,19 +992,20 @@ taxonomy_opal_get <- function(opal){
 #' A list of tibble(s) identifying a data dictionary.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' 
-#' #' # use DEMO_files provided by the package
 #' library(opalr)
-#' library(stringr)
-#'
-#' dossier <- 
-#'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
-#'
 #' opal <- 
-#'   opal.login('administrator','password', 
-#'     url ='https://opal-demo.maelstrom-research.org')
-#'   
+#'  opal.login('administrator','password',
+#'    url ='https://opal-demo.obiba.org/')
+#'    
+#' # use DEMO_files provided by the package
+#' library(madshapR)
+#' library(stringr)
+#' 
+#' dossier <-
+#'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+#' 
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
@@ -1027,11 +1014,11 @@ taxonomy_opal_get <- function(opal){
 #'   opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = TRUE))
 #' 
 #' # get the data dictionary and reshape it.
-#'  data_dict <- 
+#'  data_dict <-
 #'    try(
 #'    opal.table_dictionary_get(
 #'    opal,project = tempdir,table = "dataset_MELBOURNE_1"))
-#'    
+#' 
 #'  data_dict <- try(data_dict_opalr_fix(data_dict))
 #'   
 #' }

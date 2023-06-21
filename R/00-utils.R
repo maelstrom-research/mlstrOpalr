@@ -10,7 +10,7 @@
 #' Nothing to be returned. The function opens a web page.
 #'
 #' @examples
-#' \dontrun{
+#' {
 #'
 #' mlstrOpalr_help()
 #' 
@@ -60,7 +60,7 @@ mlstrOpalr_help <- function(){
 #' }
 #'
 #' @examples
-#' \dontrun{
+#' {
 #'
 #' valueType_list
 #'

@@ -22,7 +22,6 @@ Useful links:
 Other contributors:
 \itemize{
   \item Maelstrom-research group \email{info@maelstrom-research.org} [copyright holder, funder]
-  \item Samuel El Bouzaïdi Tiali \email{info@maelstrom-research.org} [contributor]
 }
 
 }

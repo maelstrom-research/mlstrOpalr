@@ -54,22 +54,22 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\dontrun{
+\donttest{
 
-#' # use DEMO_files provided by the package
 library(opalr)
-library(stringr)
-
-dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
-
 opal <- 
-  opal.login('administrator','password', 
-    url ='https://opal-demo.maelstrom-research.org')
+ opal.login('administrator','password',
+   url ='https://opal-demo.obiba.org/')
+    
+# use DEMO_files provided by the package
+library(madshapR)
+library(stringr)
+dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
     
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
-###### Example 1: push a table in a project.
+# push a table in a project.
 try( 
   opal_tables_push(
   opal,
@@ -78,11 +78,6 @@ try(
   project_name = tempdir,
   .force = TRUE,
   .overwrite = TRUE))
-  
-###### Example 2: push a dossier in a project.
-try(
-  opal_tables_push(
-  opal, dossier, project_name = tempdir, .force = TRUE, .overwrite = TRUE))
 
 }
 

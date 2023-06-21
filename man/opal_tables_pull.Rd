@@ -46,19 +46,20 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\dontrun{
+\donttest{
 
-#' # use DEMO_files provided by the package
 library(opalr)
+opal <- 
+ opal.login('administrator','password',
+   url ='https://opal-demo.obiba.org/')
+   
+# use DEMO_files provided by the package
+library(madshapR)
 library(stringr)
 
 dossier <- 
   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
 
-opal <- 
-  opal.login('administrator','password', 
-    url ='https://opal-demo.maelstrom-research.org')
-  
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
@@ -66,20 +67,10 @@ try(
   opal_tables_push(
   opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = TRUE))
   
-###### Example 1: pull a table from a project.
+###### Example pull a table from a project.
 try(
   opal_tables_pull(
   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
-
-###### Example 2: pull a dossier from a project.
-try(
-  opal_tables_pull(
-  opal, project = tempdir))
-
-###### Example 3: pull a data dictionary from a project.
-try(
-  opal_tables_pull(
-  opal, project = tempdir, content = 'data_dict'))
 
 }
 

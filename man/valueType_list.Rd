@@ -39,7 +39,7 @@ possibilities and their correspondence with R data types are available using
 \link{valueType_list}.
 }
 \examples{
-\dontrun{
+{
 
 valueType_list
 

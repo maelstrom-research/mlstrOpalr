@@ -4,7 +4,7 @@
 \alias{opal_project_create}
 \title{Create a project in an Opal environment}
 \usage{
-opal_project_create(opal, project, tag = NULL, ...)
+opal_project_create(opal, project, tag = NULL)
 }
 \arguments{
 \item{opal}{Opal login attributes.}
@@ -12,8 +12,6 @@ opal_project_create(opal, project, tag = NULL, ...)
 \item{project}{A character string to name the project in Opal.}
 
 \item{tag}{A character string to provide a tag for the Opal project.}
-
-\item{...}{Additional parameters.}
 }
 \value{
 A project in an Opal environment. If the project already exists, it
@@ -33,13 +31,13 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\dontrun{
+{
 
 library(opalr)
-opal <- 
-  opal.login('administrator','password', 
-    url ='https://opal-demo.maelstrom-research.org')
-  
+opal <-
+ opal.login('administrator','password',
+   url ='https://opal-demo.obiba.org/')
+
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
