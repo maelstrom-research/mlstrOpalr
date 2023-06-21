@@ -4,7 +4,7 @@
 \alias{opal_files_pull}
 \title{Download files from an Opal environment}
 \usage{
-opal_files_pull(opal, from, to = paste0(getwd(), "/opal_files"))
+opal_files_pull(opal, from, to)
 }
 \arguments{
 \item{opal}{Opal login attributes.}

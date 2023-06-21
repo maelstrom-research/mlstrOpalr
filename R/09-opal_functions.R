@@ -166,7 +166,7 @@ opal_files_push <- function(opal, from, to){
 #' @importFrom utils unzip
 #'
 #' @export
-opal_files_pull <- function(opal, from, to = paste0(getwd(),"/opal_files")){
+opal_files_pull <- function(opal, from, to){
 
   # if from = ".../.../foo"     and to = ".../.../fuu"
   #    then > zip the folder, dl and unzip

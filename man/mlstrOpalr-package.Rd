@@ -22,6 +22,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item Maelstrom-research group \email{info@maelstrom-research.org} [copyright holder, funder]
+  \item OBiBa group \email{info@obiba.org} [copyright holder]
 }
 
 }
