@@ -623,7 +623,7 @@ opal_tables_pull <- function(
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy.
 #'
 #' @examples
-#' {
+#' \donttest{
 #' 
 #' library(opalr)
 #' opal <-
@@ -875,7 +875,7 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy).
 #'
 #' @examples
-#' {
+#' \donttest{
 #' 
 #' library(opalr)
 #' opal <- 

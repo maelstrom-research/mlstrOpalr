@@ -1,11 +1,11 @@
 Package: mlstrOpalr
 Type: Package
-Title: Support compatibility between Maelstrom R packages and Opal environment
+Title: Support Compatibility Between Maelstrom R Packages and Opal Environment
 Version: 1.0.0
 Authors@R: 
     c(person(given = "Guillaume",
              family = "Fabre",
-             role = c("aut", "cre"),
+             role = c("aut", "cre", "cph"),
              email = "guijoseph.fabre@gmail.com",
              comment = c(ORCID = "0000-0002-0124-9970")),
       person("Maelstrom-research group",

@@ -4,7 +4,7 @@
 \name{mlstrOpalr-package}
 \alias{mlstrOpalr}
 \alias{mlstrOpalr-package}
-\title{mlstrOpalr: Support compatibility between Maelstrom R packages and Opal environment}
+\title{mlstrOpalr: Support Compatibility Between Maelstrom R Packages and Opal Environment}
 \description{
 The goal of mlstrOpalr is to provide functions to support compatibility between Maelstrom R packages and Opal environment. Opal is the OBiBa application for data management, and Opal environments can be integrated with RStudio environments using the package `opalr`. The user must have adequate credentials to interact with a specific Opal environment. Please see \url{https://opaldoc.obiba.org/en/dev/} for complete documentation.
 }
@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Guillaume Fabre \email{guijoseph.fabre@gmail.com} (\href{https://orcid.org/0000-0002-0124-9970}{ORCID})
+\strong{Maintainer}: Guillaume Fabre \email{guijoseph.fabre@gmail.com} (\href{https://orcid.org/0000-0002-0124-9970}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{
