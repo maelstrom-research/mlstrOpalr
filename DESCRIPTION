@@ -12,7 +12,7 @@ Authors@R:
              role=c("cph", "fnd"),
              email="info@maelstrom-research.org"),
       person("OBiBa group",
-             role="cph",
+             role="ctb",
              email="info@obiba.org"))
 Description: The goal of mlstrOpalr is to provide functions to support 
      compatibility between Maelstrom R packages and Opal environment. 
