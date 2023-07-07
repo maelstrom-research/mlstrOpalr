@@ -1,17 +1,8 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+# message received : CRAN Package Check Results for Package mlstrOpalr
+Last updated on 2023-07-07 19:52:06 CEST.
 
-* This is a new release.
+https://cran.r-project.org/web/checks/check_results_mlstrOpalr.html
 
-## Latest submission
->Please always write package names, software names and API 
-(application programming interface) names in single quotes 
-in title and description.
-
-Done
-
->Please use only undirected quotation marks in the description text.
-e.g. `opalr` --> 'opalr'
-
-Done
+The problem has not been identified locally.
