@@ -2,8 +2,6 @@
 output: github_document
 ---
 
-# mlstrOpalr (current development version 1.0.2.1000)
-
 # mlstrOpalr 1.0.2
 
 ## Creation of NEWS feed !!
@@ -13,6 +11,7 @@ Addition of `NEWS.md` for the development version use "(development version)".
 ## Bug fixes and improvements
 
 * Some improvements in the documentation of the package has been made.
+* New information in the taxonomy added (description of each fields)
 
 # mlstrOpalr 1.0.0
 
@@ -32,7 +31,6 @@ before and is not working any longer.
 ## to connect to an Opal environment
 
 * `opal_project_create()` Create a project in an Opal environment
-
 
 * `opal_files_pull()`, `opal_files_push()` : Download/Upload files from/to an 
 Opal environment.

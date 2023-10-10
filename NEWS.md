@@ -1,6 +1,4 @@
 
-# mlstrOpalr (current development version 1.0.2.1000)
-
 # mlstrOpalr 1.0.2
 
 ## Creation of NEWS feed !!
@@ -11,6 +9,7 @@ version)”.
 ## Bug fixes and improvements
 
 - Some improvements in the documentation of the package has been made.
+- New information in the taxonomy added (description of each fields)
 
 # mlstrOpalr 1.0.0
 

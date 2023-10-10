@@ -27,7 +27,7 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\donttest{
+\dontrun{
 
 library(opalr)
 opal <- 

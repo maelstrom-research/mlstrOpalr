@@ -31,7 +31,7 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-{
+\dontrun{
 
 library(opalr)
 opal <-

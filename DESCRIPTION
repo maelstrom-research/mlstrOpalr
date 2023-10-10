@@ -32,8 +32,8 @@ Imports: dplyr,
     stringr,
     tools,
     opalr,
-    fabR,
-    madshapR
+    fabR (>= 2.0.0),
+    madshapR (>= 1.0.2)
 URL: https://github.com/maelstrom-research/mlstrOpalr
 BugReports: https://github.com/maelstrom-research/mlstrOpalr/issues
 Roxygen: list(markdown = TRUE)
