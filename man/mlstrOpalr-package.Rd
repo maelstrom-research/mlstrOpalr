@@ -11,7 +11,7 @@ The goal of this package is to provide functions to support compatibility betwee
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/maelstrom-research/mlstrOpalr/}
+  \item \url{https://github.com/maelstrom-research/mlstrOpalr}
   \item Report bugs at \url{https://github.com/maelstrom-research/mlstrOpalr/issues}
 }
 

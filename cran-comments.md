@@ -1,9 +1,16 @@
 ## R CMD check results
 
-# message received : CRAN Package Check Results for Package mlstrOpalr
-Last updated on 2023-07-07 19:52:06 CEST.
+Comment of CRAN 2023-07-19 :
+> checking CRAN incoming feasibility ... NOTE
+>   Maintainer: 'Guillaume Fabre <guijoseph.fabre@gmail.com>'
+>   
+>   New submission
+>   
+>   Package was archived on CRAN
+>   
+>   CRAN repository db overrides:
+>     X-CRAN-Comment: Archived on 2023-07-19 for policy violation.
+>   
+>     On Internet access.
 
 https://cran.r-project.org/web/checks/check_results_mlstrOpalr.html
-
-The problem has not been identified locally. Can you confirm the problem still
-occur ?
