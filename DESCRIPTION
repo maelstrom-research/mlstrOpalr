@@ -22,7 +22,7 @@ Description: The goal of this package is to provide functions to support
      This 'Opal' client is specifically designed to interact with 
      'Opal Maelstrom' distributions to perform operations on the R server side. 
      The user must have adequate credentials.
-     Please see <https://opaldoc.obiba.org/en/dev/> for complete documentation.
+     Please see <https://opaldoc.obiba.org/> for complete documentation.
 License: GPL-3
 LazyData: true
 Depends: R (>= 3.4)
