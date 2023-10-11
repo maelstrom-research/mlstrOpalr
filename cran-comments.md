@@ -12,5 +12,3 @@ Comment of CRAN 2023-07-19 :
 >     X-CRAN-Comment: Archived on 2023-07-19 for policy violation.
 >   
 >     On Internet access.
-
-https://cran.r-project.org/web/checks/check_results_mlstrOpalr.html

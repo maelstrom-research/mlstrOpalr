@@ -13,7 +13,7 @@
 #' handler or Opal read/write permissions.
 #' 
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -80,7 +80,7 @@ opal_project_create <- function(opal, project, tag = NULL){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -133,7 +133,7 @@ opal_files_push <- function(opal, from, to){
 #' handler or Opal read/write permissions.
 #' 
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -225,7 +225,7 @@ opal_files_pull <- function(opal, from, to){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_dossier()] 
 #' [madshapR::as_dataset()]
@@ -415,7 +415,7 @@ opal_tables_push <- function(
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_dossier()] 
 #' [madshapR::as_dataset()]
@@ -613,7 +613,7 @@ opal_tables_pull <- function(
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_taxonomy()]
 #'
@@ -869,7 +869,7 @@ taxonomy_opal_mlstr_get <- function(opal){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_taxonomy()]
 #'
@@ -1022,7 +1022,7 @@ taxonomy_opal_get <- function(opal){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_data_dict_mlstr()]
 #'

@@ -19,7 +19,7 @@ This package is a collection of wrapper functions used in data pipelines
 connected to an Opal environment. This 'Opal' client is specifically designed 
 to interact with 'Opal Maelstrom' distributions to perform operations on the 
 R server side. The user must have adequate credentials.
-Please see [Obiba website](https://opaldoc.obiba.org/en/dev/) for complete documentation.
+Please see [Obiba website](https://opaldoc.obiba.org/) for complete documentation.
 
 This is still a work in progress, so please let us know if you used a function 
 before and is not working any longer.

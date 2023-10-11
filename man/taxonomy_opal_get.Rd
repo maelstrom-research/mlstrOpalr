@@ -37,7 +37,7 @@ try(taxonomy_opal_get(opal))
 
 }
 \seealso{
-Please see \href{https://opaldoc.obiba.org/en/dev/}{Opal documentation} for
+Please see \href{https://opaldoc.obiba.org/}{Opal documentation} for
 complete documentation.
 \code{\link[madshapR:as_taxonomy]{madshapR::as_taxonomy()}}
 }

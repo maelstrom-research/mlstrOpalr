@@ -45,6 +45,6 @@ try(opal_project_create(opal, tempdir))
 
 }
 \seealso{
-Please see \href{https://opaldoc.obiba.org/en/dev/}{Opal documentation} for
+Please see \href{https://opaldoc.obiba.org/}{Opal documentation} for
 complete documentation.
 }

@@ -8,13 +8,12 @@
 [![R-CMD-check](https://github.com/maelstrom-research/mlstrOpalr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/maelstrom-research/mlstrOpalr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of mlstrOpalr is to provide functions to support compatibility
-between Maelstrom R packages and Opal environment. Opal is the OBiBa
-application for data management, and Opal environments can be integrated
-with RStudio environments using the package `opalr`. The user must have
-adequate credentials to interact with a specific Opal environment.
-Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for
-complete documentation.
+Functions to support compatibility between Maelstrom R packages and Opal
+environment. Opal is the OBiBa application for data management, and Opal
+environments can be integrated with RStudio environments using the
+package `opalr`. The user must have adequate credentials to interact
+with a specific Opal environment. Please see [Opal
+documentation](https://opaldoc.obiba.org/) for complete documentation.
 
 # Get started
 

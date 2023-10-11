@@ -47,6 +47,6 @@ try(opal_files_push(opal, from = paste0(tempdir,"/a_file"), to = tempdir))
 
 }
 \seealso{
-Please see \href{https://opaldoc.obiba.org/en/dev/}{Opal documentation} for
+Please see \href{https://opaldoc.obiba.org/}{Opal documentation} for
 complete documentation.
 }
