@@ -1,19 +1,20 @@
 Package: mlstrOpalr
 Type: Package
 Title: Support Compatibility Between 'Maelstrom' R Packages and 'Opal' Environment
-Version: 1.0.2.9000
+Version: 1.0.3
 Authors@R: 
     c(person(given = "Guillaume",
              family = "Fabre",
-             role = c("aut", "cre", "cph"),
+             role = c("aut","cre"),
              email = "guijoseph.fabre@gmail.com",
              comment = c(ORCID = "0000-0002-0124-9970")),
       person("Maelstrom-research group",
-             role=c("cph", "fnd"),
+             role=c("fnd","cph"),
              email="info@maelstrom-research.org"),
       person("OBiBa group",
              role="ctb",
              email="info@obiba.org"))
+Maintainer: Guillaume Fabre <guijoseph.fabre@gmail.com>
 Description: Functions to support compatibility between 'Maelstrom' R packages 
      and 'Opal' environment. 'Opal' is the 'OBiBa' core database application for 
      biobanks. It is used to build data repositories that integrates data 
@@ -25,7 +26,7 @@ Description: Functions to support compatibility between 'Maelstrom' R packages
 License: GPL-3
 LazyData: true
 Depends: R (>= 3.4)
-Imports: dplyr,
+Imports: dplyr (>= 1.1.0),
     rlang,
     tidyr,
     stringr,
