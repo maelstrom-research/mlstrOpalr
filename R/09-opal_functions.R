@@ -232,10 +232,10 @@ opal_files_pull <- function(opal, from, to){
 #' [madshapR::as_data_dict_mlstr()]
 #'
 #' @param opal Opal login attributes.
-#' @param dossier List of tibble, each of them being datasets.
-#' @param dataset A tibble identifying the input dataset observations 
-#' associated to its data dictionary.
-#' @param data_dict A list of tibble(s) representing meta data of an
+#' @param dossier List of data frame, each of them being datasets.
+#' @param dataset A tibble identifying the dataset observations associated to 
+#' its data dictionary.
+#' @param data_dict A list of tibble(s) representing metadata of an
 #' associated dataset. Automatically generated if not provided.
 #' @param project_name A character string specifying the Opal project name.
 #' @param table_name A character string specifying an Opal table name.
@@ -257,20 +257,20 @@ opal_files_pull <- function(opal, from, to){
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #'     
-#' # use DEMO_files provided by the package
+#' # use madshapR_DEMO provided by the package
 #' library(madshapR)
 #' library(stringr)
-#' dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+#' dataset <- madshapR_DEMO$dataset_MELBOURNE
 #'     
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
 #' # push a table in a project.
-#' try( 
+#' try(
 #'   opal_tables_push(
 #'   opal,
-#'   dataset = dossier$dataset_MELBOURNE_1,
-#'   table_name = 'dataset_MELBOURNE_1',
+#'   dataset = dataset,
+#'   table_name = 'MELBOURNE',
 #'   project_name = tempdir,
 #'   .force = TRUE,
 #'   .overwrite = TRUE))
@@ -446,6 +446,7 @@ opal_tables_push <- function(
 #' # use DEMO_files provided by the package
 #' library(madshapR)
 #' library(stringr)
+#' library(dplyr)
 #'
 #' dossier <- 
 #'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -459,8 +460,8 @@ opal_tables_push <- function(
 #'   
 #' ###### Example pull a table from a project.
 #' try(
-#'   opal_tables_pull(
-#'   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
+#'   glimpse(opal_tables_pull(
+#'   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1')))
 #' 
 #' }
 #'
@@ -493,7 +494,11 @@ opal_tables_pull <- function(
 
   if(is.null(table_list)){
     table_list <- 
-      opal.tables(opal = opal,datasource = project) %>% pull(.data$`name`)
+      opal.tables(opal = opal,datasource = project) 
+    if(nrow(table_list) == 0) 
+      stop(call. = FALSE, 'The project has no table.')
+    
+    table_list <- table_list$`name`
   }
 
   for(i in table_list){
@@ -626,11 +631,13 @@ opal_tables_pull <- function(
 #' \dontrun{
 #' 
 #' library(opalr)
+#' library(dplyr)
+#' 
 #' opal <-
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #' 
-#' try(taxonomy_opal_mlstr_get(opal))
+#' glimpse(try(taxonomy_opal_mlstr_get(opal)))
 #'   
 #' }
 #'
@@ -882,11 +889,13 @@ taxonomy_opal_mlstr_get <- function(opal){
 #' \dontrun{
 #' 
 #' library(opalr)
+#' library(dplyr)
+#' 
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #'   
-#' try(taxonomy_opal_get(opal))
+#' try(glimpse(taxonomy_opal_get(opal)))
 #' 
 #' }
 #'
@@ -1026,7 +1035,7 @@ taxonomy_opal_get <- function(opal){
 #' complete documentation.
 #' [madshapR::as_data_dict_mlstr()]
 #'
-#' @param data_dict A list of tibble(s) representing meta data to be
+#' @param data_dict A list of tibble(s) representing metadata to be
 #' transformed. Automatically generated if not provided.
 #'
 #' @returns
@@ -1043,6 +1052,7 @@ taxonomy_opal_get <- function(opal){
 #' # use DEMO_files provided by the package
 #' library(madshapR)
 #' library(stringr)
+#' library(dplyr)
 #' 
 #' dossier <-
 #'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -1058,9 +1068,10 @@ taxonomy_opal_get <- function(opal){
 #'  data_dict <-
 #'    try(
 #'    opal.table_dictionary_get(
-#'    opal,project = tempdir,table = "dataset_MELBOURNE_1"))
+#'    opal,project = tempdir,table = "dataset_MELBOURNE"))
 #' 
 #'  data_dict <- try(data_dict_opalr_fix(data_dict))
+#'  glimpse(data_dict)
 #'   
 #' }
 #'

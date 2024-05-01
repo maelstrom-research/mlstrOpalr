@@ -7,7 +7,7 @@
 data_dict_opalr_fix(data_dict)
 }
 \arguments{
-\item{data_dict}{A list of tibble(s) representing meta data to be
+\item{data_dict}{A list of tibble(s) representing metadata to be
 transformed. Automatically generated if not provided.}
 }
 \value{
@@ -37,6 +37,7 @@ opal <-
 # use DEMO_files provided by the package
 library(madshapR)
 library(stringr)
+library(dplyr)
 
 dossier <-
   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -52,9 +53,10 @@ try(
  data_dict <-
    try(
    opal.table_dictionary_get(
-   opal,project = tempdir,table = "dataset_MELBOURNE_1"))
+   opal,project = tempdir,table = "dataset_MELBOURNE"))
 
  data_dict <- try(data_dict_opalr_fix(data_dict))
+ glimpse(data_dict)
   
 }
 

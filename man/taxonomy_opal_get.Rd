@@ -27,11 +27,13 @@ handler or Opal read/write permissions.
 \dontrun{
 
 library(opalr)
+library(dplyr)
+
 opal <- 
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')
   
-try(taxonomy_opal_get(opal))
+try(glimpse(taxonomy_opal_get(opal)))
 
 }
 

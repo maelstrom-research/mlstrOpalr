@@ -18,13 +18,13 @@ opal_tables_push(
 \arguments{
 \item{opal}{Opal login attributes.}
 
-\item{dossier}{List of tibble, each of them being datasets.}
+\item{dossier}{List of data frame, each of them being datasets.}
 
-\item{data_dict}{A list of tibble(s) representing meta data of an
+\item{data_dict}{A list of tibble(s) representing metadata of an
 associated dataset. Automatically generated if not provided.}
 
-\item{dataset}{A tibble identifying the input dataset observations
-associated to its data dictionary.}
+\item{dataset}{A tibble identifying the dataset observations associated to
+its data dictionary.}
 
 \item{table_name}{A character string specifying an Opal table name.}
 
@@ -61,20 +61,20 @@ opal <-
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')
     
-# use DEMO_files provided by the package
+# use madshapR_DEMO provided by the package
 library(madshapR)
 library(stringr)
-dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+dataset <- madshapR_DEMO$dataset_MELBOURNE
     
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
 # push a table in a project.
-try( 
+try(
   opal_tables_push(
   opal,
-  dataset = dossier$dataset_MELBOURNE_1,
-  table_name = 'dataset_MELBOURNE_1',
+  dataset = dataset,
+  table_name = 'MELBOURNE',
   project_name = tempdir,
   .force = TRUE,
   .overwrite = TRUE))

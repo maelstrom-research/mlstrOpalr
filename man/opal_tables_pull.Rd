@@ -56,6 +56,7 @@ opal <-
 # use DEMO_files provided by the package
 library(madshapR)
 library(stringr)
+library(dplyr)
 
 dossier <- 
   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -69,8 +70,8 @@ try(
   
 ###### Example pull a table from a project.
 try(
-  opal_tables_pull(
-  opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
+  glimpse(opal_tables_pull(
+  opal,project = tempdir,table_list = 'dataset_MELBOURNE_1')))
 
 }
 
