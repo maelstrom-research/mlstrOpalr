@@ -24,20 +24,22 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\donttest{
+\dontrun{
 
 library(opalr)
+library(dplyr)
+
 opal <- 
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')
   
-try(taxonomy_opal_get(opal))
+try(glimpse(taxonomy_opal_get(opal)))
 
 }
 
 }
 \seealso{
-Please see \href{https://opaldoc.obiba.org/en/dev/}{Opal documentation} for
+Please see \href{https://opaldoc.obiba.org/}{Opal documentation} for
 complete documentation.
 \code{\link[madshapR:as_taxonomy]{madshapR::as_taxonomy()}}
 }

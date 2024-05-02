@@ -13,7 +13,7 @@
 #' handler or Opal read/write permissions.
 #' 
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -27,7 +27,7 @@
 #' environment.
 #'
 #' @examples
-#' {
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <-
@@ -80,7 +80,7 @@ opal_project_create <- function(opal, project, tag = NULL){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -94,7 +94,7 @@ opal_project_create <- function(opal, project, tag = NULL){
 #' The path to Opal needs to be pasted with Opal absolute path.
 #'
 #' @examples
-#' {
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <- 
@@ -133,7 +133,7 @@ opal_files_push <- function(opal, from, to){
 #' handler or Opal read/write permissions.
 #' 
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #'
 #' @param opal Opal login attributes.
@@ -146,7 +146,7 @@ opal_files_push <- function(opal, from, to){
 #' Folder(s) containing files coming from Opal in user R environment.
 #'
 #' @examples
-#' {
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <- 
@@ -225,17 +225,17 @@ opal_files_pull <- function(opal, from, to){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_dossier()] 
 #' [madshapR::as_dataset()]
 #' [madshapR::as_data_dict_mlstr()]
 #'
 #' @param opal Opal login attributes.
-#' @param dossier List of tibble, each of them being datasets.
-#' @param dataset A tibble identifying the input dataset observations 
-#' associated to its data dictionary.
-#' @param data_dict A list of tibble(s) representing meta data of an
+#' @param dossier List of data frame, each of them being datasets.
+#' @param dataset A tibble identifying the dataset observations associated to 
+#' its data dictionary.
+#' @param data_dict A list of tibble(s) representing metadata of an
 #' associated dataset. Automatically generated if not provided.
 #' @param project_name A character string specifying the Opal project name.
 #' @param table_name A character string specifying an Opal table name.
@@ -250,27 +250,27 @@ opal_files_pull <- function(opal, from, to){
 #' A table or table(s) in Opal.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #'     
-#' # use DEMO_files provided by the package
+#' # use madshapR_DEMO provided by the package
 #' library(madshapR)
 #' library(stringr)
-#' dossier <- DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+#' dataset <- madshapR_DEMO$dataset_MELBOURNE
 #'     
 #' tempdir <- basename(tempdir())
 #' try(opal_project_create(opal, tempdir))
 #' 
 #' # push a table in a project.
-#' try( 
+#' try(
 #'   opal_tables_push(
 #'   opal,
-#'   dataset = dossier$dataset_MELBOURNE_1,
-#'   table_name = 'dataset_MELBOURNE_1',
+#'   dataset = dataset,
+#'   table_name = 'MELBOURNE',
 #'   project_name = tempdir,
 #'   .force = TRUE,
 #'   .overwrite = TRUE))
@@ -415,7 +415,7 @@ opal_tables_push <- function(
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_dossier()] 
 #' [madshapR::as_dataset()]
@@ -436,7 +436,7 @@ opal_tables_push <- function(
 #' respective data dictionary.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <- 
@@ -446,6 +446,7 @@ opal_tables_push <- function(
 #' # use DEMO_files provided by the package
 #' library(madshapR)
 #' library(stringr)
+#' library(dplyr)
 #'
 #' dossier <- 
 #'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -459,8 +460,8 @@ opal_tables_push <- function(
 #'   
 #' ###### Example pull a table from a project.
 #' try(
-#'   opal_tables_pull(
-#'   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
+#'   glimpse(opal_tables_pull(
+#'   opal,project = tempdir,table_list = 'dataset_MELBOURNE_1')))
 #' 
 #' }
 #'
@@ -493,7 +494,11 @@ opal_tables_pull <- function(
 
   if(is.null(table_list)){
     table_list <- 
-      opal.tables(opal = opal,datasource = project) %>% pull(.data$`name`)
+      opal.tables(opal = opal,datasource = project) 
+    if(nrow(table_list) == 0) 
+      stop(call. = FALSE, 'The project has no table.')
+    
+    table_list <- table_list$`name`
   }
 
   for(i in table_list){
@@ -613,7 +618,7 @@ opal_tables_pull <- function(
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_taxonomy()]
 #'
@@ -623,14 +628,16 @@ opal_tables_pull <- function(
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' 
 #' library(opalr)
+#' library(dplyr)
+#' 
 #' opal <-
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #' 
-#' try(taxonomy_opal_get(opal))
+#' glimpse(try(taxonomy_opal_mlstr_get(opal)))
 #'   
 #' }
 #'
@@ -638,7 +645,7 @@ opal_tables_pull <- function(
 #' @importFrom rlang .data
 #'
 #' @export
-taxonomy_opal_mlstr_get <- function(opal = NULL){
+taxonomy_opal_mlstr_get <- function(opal){
 
   taxonomy <- taxonomy_opal_get(opal)
 
@@ -681,8 +688,8 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
         TRUE                                                ~ NA_character_
       )) %>%
     select(
-      everything(),-.data$`vocabulary`,-.data$`vocabulary_short`,-.data$`term`,
-      .data$`vocabulary`, .data$`vocabulary_short`, .data$`term`)
+      everything(),-"vocabulary",-"vocabulary_short",-starts_with("term"),
+      "vocabulary", "vocabulary_short", starts_with("term"))
 
   list_of_scales <-
     c("Mlstr_habits",
@@ -695,10 +702,14 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
     taxonomy %>%
     filter(.data$`taxonomy` %in% list_of_scales) %>%
     select(
-      index_term_scale       = .data$`index_term`,
-      taxonomy_scale         = .data$`taxonomy`,
-      vocabulary_scale       = .data$`vocabulary`,
-      term_scale             = .data$`term`) %>%
+      index_term_scale            = "index_term",
+      taxonomy_scale              = "taxonomy",
+      taxonomy_scale_title        = "taxonomy_title",
+      taxonomy_scale_description  = "taxonomy_description",
+      vocabulary_scale            = "vocabulary",
+      term_scale                  = "term",
+      term_scale_title        = "term_title",
+      term_scale_description  = "term_description") %>%
     mutate(
       term = case_when(
         .data$`taxonomy_scale` == "Mlstr_habits"    &
@@ -820,7 +831,7 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
                .data$`index_term_scale` == 0,
                paste0("[NO_SCALE], ",.data$`term_scale`),
                .data$`term_scale`)) %>%
-    separate_rows(.data$`term_scale` ,sep = ", ") %>%
+    separate_rows("term_scale" ,sep = ", ") %>%
     mutate(across(all_of(
       c("index_term_scale","taxonomy_scale","vocabulary_scale","term_scale")),
       ~ ifelse(.data$`term_scale` == "[NO_SCALE]", NA,.))) %>%
@@ -865,7 +876,7 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_taxonomy()]
 #'
@@ -875,14 +886,16 @@ taxonomy_opal_mlstr_get <- function(opal = NULL){
 #' A tibble identifying a taxonomy (generally generated from Opal taxonomy).
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' 
 #' library(opalr)
+#' library(dplyr)
+#' 
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
 #'   
-#' try(taxonomy_opal_get(opal))
+#' try(glimpse(taxonomy_opal_get(opal)))
 #' 
 #' }
 #'
@@ -902,14 +915,18 @@ taxonomy_opal_get <- function(opal){
       index_term = as.integer(),
       taxonomy = as.character(),
       vocabulary = as.character(),
-      term = as.character())
+      taxonomy_title = as.character(),
+      taxonomy_description = as.character(),
+      term = as.character(),
+      label = as.character())
 
     return(taxonomy)
   }
 
   taxonomy <-
     taxonomy %>%
-    select(taxonomy = 'name',  vocabulary = 'vocabularies') %>%
+    select(taxonomy = 'name',  vocabulary = 'vocabularies', 
+           taxonomy_title = 'title', taxonomy_description = 'description') %>%
     add_row(taxonomy = "Unknown_taxonomy",vocabulary = "", .before = TRUE) %>%
     add_index("index_taxonomy", start = 0) %>%
     rowwise() %>%
@@ -950,15 +967,48 @@ taxonomy_opal_get <- function(opal){
       'index_taxonomy',
       'index_vocabulary',
       'index_term',
+      starts_with('taxonomy'),
       everything())
 
   .add_qual_check <- FALSE
   if(.add_qual_check == FALSE)
     taxonomy <- taxonomy %>% filter(.data$`index_term` != 0)
+  
+  terms_labels <- 
+    tibble(term = as.character(),
+           term_title = as.character(),
+           term_description = as.character())
+  
+  distinct_vocabularies <- distinct(taxonomy[c('taxonomy','vocabulary')])
+  
+  for(i in seq_len(nrow(distinct_vocabularies))){
+    # stop()}
+    
+    message(i,'/',nrow(distinct_vocabularies),
+            " - Gather taxonomy of ",distinct_vocabularies$vocabulary[i])
+    terms_labels <- 
+      bind_rows(
+        terms_labels,
+        tibble(
+          opal.terms(
+            opal,
+            distinct_vocabularies$taxonomy[i],
+            distinct_vocabularies$vocabulary[i])) %>%
+          select(term = 'name',
+                 term_title = 'title',
+                 term_description = 'description') %>%
+          mutate(taxonomy = distinct_vocabularies$taxonomy[i],
+                 vocabulary = distinct_vocabularies$vocabulary[i]))
+  }
+  
 
+  if(nrow(terms_labels) != nrow(taxonomy)){
+    stop(call. = FALSE, "Problem in taxonomy. Please contact us.")}
+  
   taxonomy <- 
-    as_taxonomy(taxonomy) %>%
-    tibble 
+    taxonomy %>%
+    full_join(terms_labels,by = c('taxonomy', 'vocabulary', 'term')) %>%
+    as_taxonomy() 
 
   return(taxonomy)
 
@@ -981,18 +1031,18 @@ taxonomy_opal_get <- function(opal){
 #' handler or Opal read/write permissions.
 #'
 #' @seealso
-#' Please see [Opal documentation](https://opaldoc.obiba.org/en/dev/) for 
+#' Please see [Opal documentation](https://opaldoc.obiba.org/) for 
 #' complete documentation.
 #' [madshapR::as_data_dict_mlstr()]
 #'
-#' @param data_dict A list of tibble(s) representing meta data to be
+#' @param data_dict A list of tibble(s) representing metadata to be
 #' transformed. Automatically generated if not provided.
 #'
 #' @returns
 #' A list of tibble(s) identifying a data dictionary.
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' 
 #' library(opalr)
 #' opal <- 
@@ -1002,6 +1052,7 @@ taxonomy_opal_get <- function(opal){
 #' # use DEMO_files provided by the package
 #' library(madshapR)
 #' library(stringr)
+#' library(dplyr)
 #' 
 #' dossier <-
 #'   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -1017,9 +1068,10 @@ taxonomy_opal_get <- function(opal){
 #'  data_dict <-
 #'    try(
 #'    opal.table_dictionary_get(
-#'    opal,project = tempdir,table = "dataset_MELBOURNE_1"))
+#'    opal,project = tempdir,table = "dataset_MELBOURNE"))
 #' 
 #'  data_dict <- try(data_dict_opalr_fix(data_dict))
+#'  glimpse(data_dict)
 #'   
 #' }
 #'

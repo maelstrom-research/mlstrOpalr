@@ -6,22 +6,22 @@
 \alias{mlstrOpalr-package}
 \title{mlstrOpalr: Support Compatibility Between 'Maelstrom' R Packages and 'Opal' Environment}
 \description{
-The goal of this package is to provide functions to support compatibility between 'Maelstrom' R packages and 'Opal' environment. 'Opal' is the 'OBiBa' core database application for biobanks. It is used to build data repositories that integrates data collected from multiple sources. 'Opal Maelstrom' is a specific implementation of this software. This 'Opal' client is specifically designed to interact with 'Opal Maelstrom' distributions to perform operations on the R server side. The user must have adequate credentials. Please see \url{https://opaldoc.obiba.org/en/dev/} for complete documentation.
+Functions to support compatibility between 'Maelstrom' R packages and 'Opal' environment. 'Opal' is the 'OBiBa' core database application for biobanks. It is used to build data repositories that integrates data collected from multiple sources. 'Opal Maelstrom' is a specific implementation of this software. This 'Opal' client is specifically designed to interact with 'Opal Maelstrom' distributions to perform operations on the R server side. The user must have adequate credentials. Please see \url{https://opaldoc.obiba.org/} for complete documentation.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/maelstrom-research/mlstrOpalr/}
+  \item \url{https://github.com/maelstrom-research/mlstrOpalr}
   \item Report bugs at \url{https://github.com/maelstrom-research/mlstrOpalr/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Guillaume Fabre \email{guijoseph.fabre@gmail.com} (\href{https://orcid.org/0000-0002-0124-9970}{ORCID}) [copyright holder]
+\strong{Maintainer}: Guillaume Fabre \email{guijoseph.fabre@gmail.com} (\href{https://orcid.org/0000-0002-0124-9970}{ORCID})
 
 Other contributors:
 \itemize{
-  \item Maelstrom-research group \email{info@maelstrom-research.org} [copyright holder, funder]
+  \item Maelstrom-research group \email{info@maelstrom-research.org} [funder, copyright holder]
   \item OBiBa group \email{info@obiba.org} [contributor]
 }
 

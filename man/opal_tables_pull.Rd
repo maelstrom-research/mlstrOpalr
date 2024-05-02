@@ -46,7 +46,7 @@ environment. Some function errors produced may be associated with the
 handler or Opal read/write permissions.
 }
 \examples{
-\donttest{
+\dontrun{
 
 library(opalr)
 opal <- 
@@ -56,6 +56,7 @@ opal <-
 # use DEMO_files provided by the package
 library(madshapR)
 library(stringr)
+library(dplyr)
 
 dossier <- 
   DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
@@ -69,14 +70,14 @@ try(
   
 ###### Example pull a table from a project.
 try(
-  opal_tables_pull(
-  opal,project = tempdir,table_list = 'dataset_MELBOURNE_1'))
+  glimpse(opal_tables_pull(
+  opal,project = tempdir,table_list = 'dataset_MELBOURNE_1')))
 
 }
 
 }
 \seealso{
-Please see \href{https://opaldoc.obiba.org/en/dev/}{Opal documentation} for
+Please see \href{https://opaldoc.obiba.org/}{Opal documentation} for
 complete documentation.
 \code{\link[madshapR:as_dossier]{madshapR::as_dossier()}}
 \code{\link[madshapR:as_dataset]{madshapR::as_dataset()}}

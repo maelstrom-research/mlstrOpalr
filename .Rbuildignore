@@ -4,7 +4,8 @@
 ^docs$
 ^pkgdown$
 ^\.github$
-^README.Rmd$
+^README\.Rmd$
+^NEWS\.Rmd$
 ^CRAN-SUBMISSION$
 ^cran-comments\.md$
 ^data-raw$

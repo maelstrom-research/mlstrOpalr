@@ -1,40 +1,40 @@
 Package: mlstrOpalr
 Type: Package
 Title: Support Compatibility Between 'Maelstrom' R Packages and 'Opal' Environment
-Version: 1.0.1
+Version: 1.0.3
 Authors@R: 
     c(person(given = "Guillaume",
              family = "Fabre",
-             role = c("aut", "cre", "cph"),
+             role = c("aut","cre"),
              email = "guijoseph.fabre@gmail.com",
              comment = c(ORCID = "0000-0002-0124-9970")),
       person("Maelstrom-research group",
-             role=c("cph", "fnd"),
+             role=c("fnd","cph"),
              email="info@maelstrom-research.org"),
       person("OBiBa group",
              role="ctb",
              email="info@obiba.org"))
-Description: The goal of this package is to provide functions to support 
-     compatibility between 'Maelstrom' R packages and 'Opal' environment. 
-     'Opal' is the 'OBiBa' core database application for biobanks. It is used 
-     to build data repositories that integrates data collected from multiple 
-     sources. 'Opal Maelstrom' is a specific implementation of this software. 
-     This 'Opal' client is specifically designed to interact with 
-     'Opal Maelstrom' distributions to perform operations on the R server side. 
-     The user must have adequate credentials.
+Maintainer: Guillaume Fabre <guijoseph.fabre@gmail.com>
+Description: Functions to support compatibility between 'Maelstrom' R packages 
+     and 'Opal' environment. 'Opal' is the 'OBiBa' core database application for 
+     biobanks. It is used to build data repositories that integrates data 
+     collected from multiple sources. 'Opal Maelstrom' is a specific 
+     implementation of this software. This 'Opal' client is specifically 
+     designed to interact with 'Opal Maelstrom' distributions to perform 
+     operations on the R server side. The user must have adequate credentials.
      Please see <https://opaldoc.obiba.org/> for complete documentation.
 License: GPL-3
 LazyData: true
 Depends: R (>= 3.4)
-Imports: dplyr,
+Imports: dplyr (>= 1.1.0),
     rlang,
     tidyr,
     stringr,
     tools,
     opalr,
-    fabR,
-    madshapR
-URL: https://github.com/maelstrom-research/mlstrOpalr/
+    fabR (>= 2.0.0),
+    madshapR (>= 1.0.2)
+URL: https://github.com/maelstrom-research/mlstrOpalr
 BugReports: https://github.com/maelstrom-research/mlstrOpalr/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
