@@ -1,11 +1,14 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^\.github$
 ^README\.Rmd$
 ^NEWS\.Rmd$
-^CRAN-SUBMISSION$
 ^cran-comments\.md$
-^data-raw$
+^doc$
+^Meta$
+^CRAN-SUBMISSION$
+^tests$
