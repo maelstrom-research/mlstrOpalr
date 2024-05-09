@@ -56,7 +56,6 @@ handler or Opal read/write permissions.
 \examples{
 \dontrun{
 
-library(opalr)
 opal <- 
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')

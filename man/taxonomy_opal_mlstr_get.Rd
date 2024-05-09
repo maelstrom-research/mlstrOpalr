@@ -26,7 +26,6 @@ handler or Opal read/write permissions.
 \examples{
 \dontrun{
 
-library(opalr)
 library(dplyr)
 
 opal <-
