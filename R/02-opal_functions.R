@@ -689,6 +689,8 @@ taxonomy_opal_mlstr_get <- function(opal){
       everything(),-"vocabulary",-"vocabulary_short",-starts_with("term"),
       "vocabulary", "vocabulary_short", starts_with("term"))
 
+  
+  # add any new taxonomy scale in the order expected in the catalogue
   list_of_scales <-
     c("Mlstr_habits",
       "Mlstr_birth",
@@ -814,7 +816,7 @@ taxonomy_opal_mlstr_get <- function(opal){
           .data$`vocabulary_scale` == "Other"
         ~ "Other_soc_characteristics",
         
-        
+        # if any unknown scale
         .data$`taxonomy_scale` == "Mlstr_habits"    &
           .data$`vocabulary_scale` == "Mlstr_habits_Unknown_vocabulary"
          ~ "Lifestyle_behaviours_Unknown_term",

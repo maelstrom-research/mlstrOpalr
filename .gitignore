@@ -9,8 +9,8 @@ _pkgdown.yml
 docs
 inst/doc
 roxy_mlstrOpalr.xlsx
-^README.Rmd$
-^NEWS.Rmd$
 /doc/
 /Meta/
 data-raw
+README.Rmd
+NEWS.Rmd

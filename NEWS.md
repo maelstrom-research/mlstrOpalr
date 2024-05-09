@@ -1,5 +1,26 @@
 
-# mlstrOpalr 1.0.3 (release : 2024-05-01)
+# mlstrOpalr 1.1.0 (release : 20xx-xx-xx)
+
+## Bug fixes and improvements
+
+New scales were added in the Maelstrom database. The function
+`taxonomy_opal_mlstr_get()` has been updated accordingly.
+<https://github.com/maelstrom-research/mlstrOpalr/issues/12>
+
+`opalr::opal.login()` has been imported in the package from opalr
+package. <https://github.com/maelstrom-research/mlstrOpalr/issues/11>
+
+## deprecated functions
+
+To avoid confusion with help(function), the function `mlstrOpalr_help()`
+has been renamed `mlstrOpalr_website()`.
+<https://github.com/maelstrom-research/mlstrOpalr/issues/9>
+
+## Dependency changes
+
+- lifecycle has been added in the dependencies
+
+# mlstrOpalr 1.0.3
 
 ## Bug fixes and improvements
 
