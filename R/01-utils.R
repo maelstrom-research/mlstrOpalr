@@ -12,14 +12,14 @@
 #' @examples
 #' {
 #'
-#' mlstrOpalr_help()
+#' mlstrOpalr_website()
 #' 
 #' }
 #'
 #' @importFrom utils browseURL
 #'
 #' @export
-mlstrOpalr_help <- function(){
+mlstrOpalr_website <- function(){
 
   browseURL("https://maelstrom-research.github.io/mlstrOpalr-documentation/")
 
