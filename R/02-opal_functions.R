@@ -29,7 +29,6 @@
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <-
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
@@ -96,7 +95,6 @@ opal_project_create <- function(opal, project, tag = NULL){
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
@@ -148,7 +146,6 @@ opal_files_push <- function(opal, from, to){
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
@@ -252,7 +249,6 @@ opal_files_pull <- function(opal, from, to){
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
@@ -438,7 +434,6 @@ opal_tables_push <- function(
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
@@ -630,7 +625,6 @@ opal_tables_pull <- function(
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' library(dplyr)
 #' 
 #' opal <-
@@ -647,7 +641,11 @@ opal_tables_pull <- function(
 #' @export
 taxonomy_opal_mlstr_get <- function(opal){
 
-  taxonomy <- taxonomy_opal_get(opal)
+  taxonomy <- 
+    taxonomy_opal_get(opal) %>%
+    bind_rows(tibble(
+      term_title = as.character(),
+      term_description = as.character()))
 
   taxonomy_unknown <-
     taxonomy %>%
@@ -693,7 +691,9 @@ taxonomy_opal_mlstr_get <- function(opal){
 
   list_of_scales <-
     c("Mlstr_habits",
+      "Mlstr_birth",
       "Mlstr_genhealth",
+      "Mlstr_symptoms",
       "Mlstr_cogscale",
       "Mlstr_events",
       "Mlstr_social")
@@ -708,10 +708,12 @@ taxonomy_opal_mlstr_get <- function(opal){
       taxonomy_scale_description  = "taxonomy_description",
       vocabulary_scale            = "vocabulary",
       term_scale                  = "term",
-      term_scale_title        = "term_title",
-      term_scale_description  = "term_description") %>%
+      term_scale_title            = "term_title",
+      term_scale_description      = "term_description") %>%
     mutate(
       term = case_when(
+        
+        ## Mlstr_habits : 11 vocabularies
         .data$`taxonomy_scale` == "Mlstr_habits"    &
           .data$`vocabulary_scale` == "Tobacco"
         ~ "Tobacco",
@@ -745,6 +747,13 @@ taxonomy_opal_mlstr_get <- function(opal){
         .data$`taxonomy_scale` == "Mlstr_habits"    &
           .data$`vocabulary_scale` == "Other"
         ~ "Other_lifestyle",
+        
+        ## Mlstr_birth : 1 vocabularies
+        .data$`taxonomy_scale` == "Mlstr_birth"    &
+          .data$`vocabulary_scale` == "pub_mens_meno_andro"
+        ~ "Menstr_menop_andropause",
+        
+        ## Mlstr_genhealth : 5 vocabularies
         .data$`taxonomy_scale` == "Mlstr_genhealth" &
           .data$`vocabulary_scale` == "Perception"
         ~ "Perc_health",
@@ -760,6 +769,13 @@ taxonomy_opal_mlstr_get <- function(opal){
         .data$`taxonomy_scale` == "Mlstr_genhealth" &
           .data$`vocabulary_scale` == "Other"
         ~ "Other",
+        
+        ## Mlstr_symptoms : 1 vocabularies
+        .data$`taxonomy_scale` == "Mlstr_symptoms"    &
+          .data$`vocabulary_scale` == "General"
+        ~ "General_sympt",
+        
+        ## Mlstr_cogscale : 4 vocabularies        
         .data$`taxonomy_scale` == "Mlstr_cogscale"  &
           .data$`vocabulary_scale` == "Cog_scale"
         ~ "Cognitive_functioning",
@@ -772,12 +788,16 @@ taxonomy_opal_mlstr_get <- function(opal){
         .data$`taxonomy_scale` == "Mlstr_cogscale"  &
           .data$`vocabulary_scale` == "Other_psycho"
         ~ "Other_psycholog_measures",
+        
+        ## Mlstr_events : 2 vocabularies
         .data$`taxonomy_scale` == "Mlstr_events"    &
           .data$`vocabulary_scale` == "Life_events"
         ~ "Life_events",
         .data$`taxonomy_scale` == "Mlstr_events"    &
           .data$`vocabulary_scale` == "Beliefs_values"
         ~ "Beliefs_values",
+        
+        ## Mlstr_social : 5 vocabularies
         .data$`taxonomy_scale` == "Mlstr_social"    &
           .data$`vocabulary_scale` == "Social_network"
         ~ "Soc_network",
@@ -793,25 +813,34 @@ taxonomy_opal_mlstr_get <- function(opal){
         .data$`taxonomy_scale` == "Mlstr_social"    &
           .data$`vocabulary_scale` == "Other"
         ~ "Other_soc_characteristics",
+        
+        
         .data$`taxonomy_scale` == "Mlstr_habits"    &
           .data$`vocabulary_scale` == "Mlstr_habits_Unknown_vocabulary"
-
          ~ "Lifestyle_behaviours_Unknown_term",
+        
+        .data$`taxonomy_scale` == "Mlstr_birth"    &
+          .data$`vocabulary_scale` == "Mlstr_birth_Unknown_vocabulary"
+         ~ "Reproduction_Unknown_term",
+        
         .data$`taxonomy_scale` == "Mlstr_genhealth" &
           .data$`vocabulary_scale` == "Mlstr_genhealth_Unknown_vocabulary"
-
          ~ "Health_status_functional_limitations_Unknown_term",
+        
+        .data$`taxonomy_scale` == "Mlstr_symptoms"    &
+          .data$`vocabulary_scale` == "Mlstr_symptoms_Unknown_vocabulary"
+         ~ "Symptoms_signs_Unknown_term",
+        
         .data$`taxonomy_scale` == "Mlstr_cogscale"  &
           .data$`vocabulary_scale` == "Mlstr_cogscale_Unknown_vocabulary"
-
          ~ "Cognitive_psychological_measures_Unknown_term",
+        
         .data$`taxonomy_scale` == "Mlstr_events"    &
           .data$`vocabulary_scale` == "Mlstr_events_Unknown_vocabulary"
-
          ~ "Life_events_plans_beliefs_Unknown_term",
+        
         .data$`taxonomy_scale` == "Mlstr_social"    &
           .data$`vocabulary_scale` == "Mlstr_social_Unknown_vocabulary"
-
          ~ "Social_environment_Unknown_term",
         TRUE
         ~ NA_character_))
@@ -888,7 +917,6 @@ taxonomy_opal_mlstr_get <- function(opal){
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' library(dplyr)
 #' 
 #' opal <- 
@@ -1001,7 +1029,6 @@ taxonomy_opal_get <- function(opal){
                  vocabulary = distinct_vocabularies$vocabulary[i]))
   }
   
-
   if(nrow(terms_labels) != nrow(taxonomy)){
     stop(call. = FALSE, "Problem in taxonomy. Please contact us.")}
   
@@ -1044,7 +1071,6 @@ taxonomy_opal_get <- function(opal){
 #' @examples
 #' \dontrun{
 #' 
-#' library(opalr)
 #' opal <- 
 #'  opal.login('administrator','password',
 #'    url ='https://opal-demo.obiba.org/')
