@@ -1,5 +1,11 @@
 
-# mlstrOpalr 1.1.0 (release : 20xx-xx-xx)
+# mlstrOpalr 1.0.4 (release : 2025-06-20)
+
+## updates in madshapR dependency
+
+Updates in mlstrOpalr, to take in account madshapR dependency changes
+(in examples, the object madshapR_DEMO has been replaced by
+madshapR_example).
 
 ## Bug fixes and improvements
 

@@ -1,7 +1,7 @@
 Package: mlstrOpalr
 Type: Package
 Title: Support Compatibility Between 'Maelstrom' R Packages and 'Opal' Environment
-Version: 1.0.3.9001
+Version: 1.0.4
 Authors@R: 
     c(person(given = "Guillaume",
              family = "Fabre",
