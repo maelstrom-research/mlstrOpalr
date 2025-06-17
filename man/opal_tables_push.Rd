@@ -63,7 +63,7 @@ opal <-
 # use madshapR_DEMO provided by the package
 library(madshapR)
 library(stringr)
-dataset <- madshapR_DEMO$dataset_MELBOURNE
+dataset <- madshapR_example$dataset_example 
     
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
@@ -73,10 +73,10 @@ try(
   opal_tables_push(
   opal,
   dataset = dataset,
-  table_name = 'MELBOURNE',
+  table_name = 'dataset',
   project_name = tempdir,
   .force = TRUE,
-  .overwrite = TRUE))
+  .overwrite = FALSE))
 
 }
 

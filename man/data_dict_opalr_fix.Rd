@@ -33,26 +33,26 @@ opal <-
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')
    
-# use DEMO_files provided by the package
+# use madshapR_example provided by the package
 library(madshapR)
 library(stringr)
 library(dplyr)
+library(opalr)
 
-dossier <-
-  DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+dossier <- dossier_create(madshapR_example$dataset_example)
 
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
 try(
   opal_tables_push(
-  opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = TRUE))
+  opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = FALSE))
 
 # get the data dictionary and reshape it.
  data_dict <-
-   try(
-   opal.table_dictionary_get(
-   opal,project = tempdir,table = "dataset_MELBOURNE"))
+    try(
+    opal.table_dictionary_get(
+    opal,project = tempdir,table = "dataset"))
 
  data_dict <- try(data_dict_opalr_fix(data_dict))
  glimpse(data_dict)

@@ -52,25 +52,24 @@ opal <-
  opal.login('administrator','password',
    url ='https://opal-demo.obiba.org/')
    
-# use DEMO_files provided by the package
+# use madshapR_example provided by the package
 library(madshapR)
 library(stringr)
 library(dplyr)
 
-dossier <- 
-  DEMO_files[str_detect(names(DEMO_files),"dataset_MELBOURNE")]
+dossier <- dossier_create(madshapR_example$dataset_example) 
 
 tempdir <- basename(tempdir())
 try(opal_project_create(opal, tempdir))
 
 try(
-  opal_tables_push(
-  opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = TRUE))
+ opal_tables_push(
+ opal, dossier,project_name = tempdir, .force = TRUE, .overwrite = FALSE))
   
 ###### Example pull a table from a project.
 try(
   glimpse(opal_tables_pull(
-  opal,project = tempdir,table_list = 'dataset_MELBOURNE_1')))
+  opal,project = tempdir,table_list = 'dataset')))
 
 }
 

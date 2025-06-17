@@ -38,6 +38,7 @@ opal <-
    url ='https://opal-demo.obiba.org/')
   
 tempdir <- tempdir()
+invisible(dir.create(paste0(tempdir)))
 invisible(dir.create(paste0(tempdir,"/a_file")))
 invisible(file.create(paste0(tempdir,"/a_file","/file.txt")))
 try(opal_files_push(opal, from = paste0(tempdir,"/a_file"), to = tempdir))

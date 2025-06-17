@@ -4,4 +4,3 @@
 #' @keywords exported
 #' @export
 opalr::opal.login
-
